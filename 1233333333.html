@@ -1,0 +1,1981 @@
+
+<!DOCTYPE html>
+<html lang="me">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura | Autentični japanski restoran u Crnoj Gori</title>
+  <meta name="description" content="Doživite autentičnu japansku kuhinju u našim lokacijama u Porto Montenegru, Podgorici i our Japan Street Food objektu">
+  
+  <!-- Fontovi -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap">
+  
+  <style>
+    /* === OSNOVNI STILOVI === */
+    :root {
+      --primary: #D30000;
+      --primary-light: rgba(211, 0, 0, 0.1);
+      --secondary: #000000;
+      --background: #f9f8f4;
+      --background-dark: #1a1a1a;
+      --foreground: #1a1a1a;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-300: #d4d4d4;
+      --gray-500: #737373;
+      --gray-700: #404040;
+      --gray-900: #171717;
+      --radius: 4px;
+      --transition: all 0.3s ease;
+    }
+
+    /* Globalni reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px; /* Kompenzacija za fiksni navbar */
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--foreground);
+      background-color: var(--background);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .bg-pattern {
+      background-color: var(--background);
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d30000' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .text-primary {
+      color: var(--primary);
+    }
+
+    .japanese-pattern {
+      position: relative;
+    }
+
+    .japanese-pattern::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d30000' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    /* === ZAGLAVLJE === */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: var(--transition);
+      background-color: transparent;
+    }
+
+    .navbar.scrolled {
+      background-color: rgba(26, 26, 26, 0.9);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+    }
+
+    .logo svg {
+      margin-right: 10px;
+      fill: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      transition: var(--transition);
+      background-color: var(--white);
+    }
+
+    /* === HERO SEKCIJA === */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      background-image: url('https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Noto Sans JP', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      line-height: 1;
+      margin-bottom: 16px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    /* === DUGMAD === */
+    .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border-radius: var(--radius);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      background-color: #b00000;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--white);
+      color: var(--secondary);
+      transform: translateY(-2px);
+    }
+
+    /* === SEKCIJA ZAGLAVLJA === */
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 20px auto 0;
+      color: var(--gray-700);
+    }
+
+    /* === SPECIALTY SEKCIJA === */
+    .specialty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .specialty-card {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .specialty-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-image {
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .specialty-card:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 6px 12px;
+      border-radius: var(--radius);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .card-description {
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      color: var(--gray-700);
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-300);
+    }
+
+    .card-price {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* === LOKACIJE SEKCIJA === */
+    .locations-section {
+      background-color: var(--background-dark);
+      color: var(--white);
+    }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .location-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: var(--transition);
+    }
+
+    .location-card:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .location-type {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .location-name {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+
+    .location-details {
+      margin-bottom: 20px;
+    }
+
+    .location-detail {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .location-detail svg {
+      flex-shrink: 0;
+      margin-right: 10px;
+      margin-top: 3px;
+    }
+
+    .location-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .location-btn {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      border-radius: var(--radius);
+      background-color: var(--primary);
+      color: white;
+      transition: var(--transition);
+    }
+
+    .location-btn.outline {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .location-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* === MENU SEKCIJA === */
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .menu-tab {
+      padding: 8px 20px;
+      border-radius: 30px;
+      background-color: var(--white);
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .menu-tab.active {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .menu-item {
+      background-color: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .menu-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .menu-item:hover .menu-image img {
+      transform: scale(1.05);
+    }
+
+    .menu-content {
+      padding: 20px;
+    }
+
+    .menu-name {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .menu-description {
+      color: var(--gray-700);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .menu-price {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    /* === GALERIJA SEKCIJA === */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 250px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    .gallery-item:nth-child(3n+1) {
+      grid-column: span 1;
+    }
+
+    .gallery-item:nth-child(3n+2) {
+      grid-column: span 1;
+    }
+
+    .gallery-item:nth-child(3n+3) {
+      grid-column: span 1;
+    }
+
+    .gallery-item:nth-child(6n+1) {
+      grid-row: span 2;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0);
+      transition: var(--transition);
+      z-index: 1;
+    }
+
+    .gallery-item:hover::after {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: var(--white);
+      cursor: pointer;
+      z-index: 2001;
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    /* === TESTIMONIALS SEKCIJA === */
+    .testimonials-section {
+      background-color: var(--primary-light);
+    }
+
+    .testimonial-slider {
+      position: relative;
+      overflow: hidden;
+      padding: 40px 20px;
+    }
+
+    .testimonial-container {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .testimonial {
+      flex: 0 0 100%;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .testimonial-text {
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .testimonial-text::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid var(--white);
+    }
+
+    .testimonial-text p {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gray-700);
+    }
+
+    .testimonial-author {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .testimonial-image {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 15px;
+      border: 3px solid var(--white);
+    }
+
+    .testimonial-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .testimonial-title {
+      font-size: 0.9rem;
+      color: var(--gray-500);
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      gap: 10px;
+    }
+
+    .slider-arrow {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--white);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .slider-arrow:hover {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 8px;
+    }
+
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--gray-300);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .slider-dot.active {
+      background-color: var(--primary);
+      transform: scale(1.3);
+    }
+
+    /* === KONTAKT SEKCIJA === */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .contact-form h3, .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      background-color: var(--white);
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(211, 0, 0, 0.1);
+    }
+
+    .form-status {
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: var(--radius);
+      display: none;
+    }
+
+    .form-status.success {
+      display: block;
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+
+    .form-status.error {
+      display: block;
+      background-color: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .info-block {
+      margin-bottom: 24px;
+    }
+
+    .info-block h4 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .info-item svg {
+      flex-shrink: 0;
+      margin-right: 16px;
+      margin-top: 3px;
+      fill: var(--primary);
+    }
+
+    .working-hours {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .working-hours div {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* === MAP SECTION === */
+    .map-container {
+      height: 400px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background-color: var(--background-dark);
+      color: var(--white);
+      padding: 60px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-info {
+      grid-column: span 1;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-logo svg {
+      margin-right: 10px;
+      fill: var(--primary);
+    }
+
+    .footer-info p {
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-icon:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-links h4, .footer-contact h4 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .footer-links ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: var(--gray-500);
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+
+    .footer-contact address {
+      font-style: normal;
+      color: var(--gray-500);
+      line-height: 1.8;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      color: var(--gray-500);
+      font-size: 0.9rem;
+    }
+
+    /* === ANIMATIONS === */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s forwards;
+      animation-delay: 0.3s;
+    }
+
+    .fade-in:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+
+    .fade-in:nth-child(3) {
+      animation-delay: 0.9s;
+    }
+
+    .fade-in:nth-child(4) {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section animations */
+    .section-appear {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .section-appear.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === RESPONSIVENESS === */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+      
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        top: 70px;
+        width: 100%;
+        background-color: rgba(26, 26, 26, 0.95);
+        padding: 20px;
+        z-index: 999;
+        text-align: center;
+      }
+      
+      .section-header h2 {
+        font-size: 2.2rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery-item:nth-child(n) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+      
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .specialty-grid,
+      .locations-grid,
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigacija -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="currentColor"/>
+          <path d="M15 8.5C15 9.88071 13.8807 11 12.5 11C11.1193 11 10 9.88071 10 8.5C10 7.11929 11.1193 6 12.5 6C13.8807 6 15 7.11929 15 8.5Z" fill="white"/>
+          <path d="M14 15C14 16.1046 13.1046 17 12 17C10.8954 17 10 16.1046 10 15C10 13.8954 10.8954 13 12 13C13.1046 13 14 13.8954 14 15Z" fill="white"/>
+        </svg>
+        <a href="#pocetna">NAMA</a>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="#specijaliteti" class="nav-link">Specijaliteti</a>
+        <a href="#lokacije" class="nav-link">Lokacije</a>
+        <a href="#meni" class="nav-link">Meni</a>
+        <a href="#galerija" class="nav-link">Galerija</a>
+        <a href="#o-nama" class="nav-link">O nama</a>
+        <a href="#kontakt" class="nav-link">Kontakt</a>
+      </nav>
+      
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero sekcija -->
+  <section class="hero" id="pocetna">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <p class="hero-subtitle fade-in">Autentična japanska kuhinja</p>
+      <h1 class="fade-in">NAMA <span class="text-primary">japansak slova</span></h1>
+      <p class="fade-in">Doživite jedinstveni spoj tradicionalne japanske kuhinje i modernih kulinarskih tehnika u srcu Crne Gore</p>
+      <div class="hero-buttons fade-in">
+        <a href="#specijaliteti" class="btn btn-primary">Naši specijaliteti</a>
+        <a href="#rezervacija" class="btn btn-secondary">Rezerviši sto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specijaliteti sekcija -->
+  <section class="section bg-pattern" id="specijaliteti">
+    <div class="container">
+      <div class="section-header section-appear">
+        <h2>Naši specijaliteti</h2>
+        <p>Otkrijte jedinstvene ukuse pripremljene od strane naših majstora japanske kuhinje</p>
+      </div>
+      
+      <div class="specialty-grid section-appear">
+        <div class="specialty-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Sushi Selection">
+          </div>
+          <span class="card-tag">Najpopularnije</span>
+          <div class="card-content">
+            <h3>Premium Sushi Selection</h3>
+            <p class="card-description">Izbor najkvalitetnijih vrsta sushija, svježe pripremljenih od strane naših sushi majstora.</p>
+            <div class="card-meta">
+              <span>4-6 osoba</span>
+              <span class="card-price">45€</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="specialty-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1364&q=80" alt="Wagyu Steak">
+          </div>
+          <div class="card-content">
+            <h3>Wagyu Steak</h3>
+            <p class="card-description">A5 ocena Wagyu govedina, savršeno pečena i poslužena sa sezonskim povrćem i posebnim umacima.</p>
+            <div class="card-meta">
+              <span>1 osoba</span>
+              <span class="card-price">75€</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="specialty-card">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1617196034183-421b4917c92d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Ramen">
+          </div>
+          <div class="card-content">
+            <h3>Tonkotsu Ramen</h3>
+            <p class="card-description">Bogata supa od svinjskih kostiju kuvana 48 sati, sa domaćim rezancima, chashu svinjetinom i mekim kuvanim jajetom.</p>
+            <div class="card-meta">
+              <span>1 osoba</span>
+              <span class="card-price">18€</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lokacije sekcija -->
+  <section class="section locations-section" id="lokacije">
+    <div class="container">
+      <div class="section-header section-appear">
+        <h2>Naše lokacije</h2>
+        <p>Pronađite NAMA restoran najbliži vama i doživite ukuse Japana u Crnoj Gori</p>
+      </div>
+      
+      <div class="locations-grid section-appear">
+        <div class="location-card">
+          <span class="location-type">Premium Restoran</span>
+          <h3 class="location-name">Porto Montenegro</h3>
+          <div class="location-details">
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span>Obala bb, Porto Montenegro, Tivat</span>
+            </div>
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+              </svg>
+              <span>Pon - Ned: 12:00 - 23:00</span>
+            </div>
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              <span>+382 32 123 456</span>
+            </div>
+          </div>
+          <div class="location-actions">
+            <a href="#rezervacija" class="location-btn">Rezerviši</a>
+            <a href="https://maps.google.com" target="_blank" class="location-btn outline">Pokaži na mapi</a>
+          </div>
+        </div>
+        
+        <div class="location-card">
+          <span class="location-type">Glavni Restoran</span>
+          <h3 class="location-name">Podgorica Centar</h3>
+          <div class="location-details">
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span>Bulevar Sv. Petra Cetinjskog 56, Podgorica</span>
+            </div>
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+              </svg>
+              <span>Pon - Ned: 10:00 - 23:00</span>
+            </div>
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              <span>+382 20 234 567</span>
+            </div>
+          </div>
+          <div class="location-actions">
+            <a href="#rezervacija" class="location-btn">Rezerviši</a>
+            <a href="https://maps.google.com" target="_blank" class="location-btn outline">Pokaži na mapi</a>
+          </div>
+        </div>
+        
+        <div class="location-card">
+          <span class="location-type">Japan street food</span>
+          <h3 class="location-name">NAMA City</h3>
+          <div class="location-details">
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span>Delta City tržni centar, Podgorica</span>
+            </div>
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+              </svg>
+              <span>Pon - Ned: 10:00 - 22:00</span>
+            </div>
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              <span>+382 20 345 678</span>
+            </div>
+          </div>
+          <div class="location-actions">
+            <a href="#rezervacija" class="location-btn">Rezerviši</a>
+            <a href="https://maps.google.com" target="_blank" class="location-btn outline">Pokaži na mapi</a>
+          </div>
+        </div>
+        
+        <div class="location-card">
+          <span class="location-type">Street Food</span>
+          <h3 class="location-name">Japan Street Food</h3>
+          <div class="location-details">
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <span>Njegoševa 14, Podgorica</span>
+            </div>
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+              </svg>
+              <span>Pon - Ned: 11:00 - 22:00</span>
+            </div>
+            <div class="location-detail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              </svg>
+              <span>+382 20 456 789</span>
+            </div>
+          </div>
+          <div class="location-actions">
+            <a href="https://maps.google.com" target="_blank" class="location-btn outline">Pokaži na mapi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meni sekcija -->
+  <section class="section" id="meni">
+    <div class="container">
+      <div class="section-header section-appear">
+        <h2>Naš meni</h2>
+        <p>Istražite bogatu ponudu tradicionalnih i savremenih japanskih jela</p>
+      </div>
+      
+      <div class="menu-tabs section-appear">
+        <div class="menu-tab active" data-tab="sushi">Sushi</div>
+        <div class="menu-tab" data-tab="noodles">Rezanci</div>
+        <div class="menu-tab" data-tab="main">Glavna jela</div>
+        <div class="menu-tab" data-tab="desserts">Deserti</div>
+      </div>
+      
+      <div class="menu-content section-appear">
+        <div class="menu-grid active" id="sushi-menu">
+          <div class="menu-item">
+            <div class="menu-image">
+              <img src="https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?ixlib=rb-4.0.3&auto=format&fit=crop&w=1742&q=80" alt="Nigiri Set">
+            </div>
+            <div class="menu-content">
+              <h3 class="menu-name">Nigiri Set</h3>
+              <p class="menu-description">Asortiman 8 komada nigiri sushija sa lososom, tunom, brancinom i kozicama</p>
+              <div class="menu-price">16€</div>
+            </div>
+          </div>
+          
+          <div class="menu-item">
+            <div class="menu-image">
+              <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" alt="Maki Set">
+            </div>
+            <div class="menu-content">
+              <h3 class="menu-name">Maki Set</h3>
+              <p class="menu-description">24 komada raznovrsnih maki rolnica sa svježim sastojcima po izboru šefa</p>
+              <div class="menu-price">24€</div>
+            </div>
+          </div>
+          
+          <div class="menu-item">
+            <div class="menu-image">
+              <img src="https://images.unsplash.com/photo-1617196035154-1e7e6e28b0db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Sakura Special Roll">
+            </div>
+            <div class="menu-content">
+              <h3 class="menu-name">NAMA Special Roll</h3>
+              <p class="menu-description">Specijalitet kuće sa flamiranim lososom, avokadom i posebnim umakom</p>
+              <div class="menu-price">18€</div>
+            </div>
+          </div>
+          
+          <div class="menu-item">
+            <div class="menu-image">
+              <img src="https://images.unsplash.com/photo-1583623025817-d180a2221d0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80" alt="Sashimi Deluxe">
+            </div>
+            <div class="menu-content">
+              <h3 class="menu-name">Sashimi Deluxe</h3>
+              <p class="menu-description">Premium selekcija svježih komada ribe, servirana na ledu sa wasabi i tsuyu umakom</p>
+              <div class="menu-price">28€</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Ostali meniji će biti prikazani/sakriveni putem JavaScripta -->
+        <div class="menu-grid" id="noodles-menu" style="display: none;">
+          <!-- Ovdje bi bili proizvodi za kategoriju rezanci -->
+        </div>
+        
+        <div class="menu-grid" id="main-menu" style="display: none;">
+          <!-- Ovdje bi bili proizvodi za kategoriju glavna jela -->
+        </div>
+        
+        <div class="menu-grid" id="desserts-menu" style="display: none;">
+          <!-- Ovdje bi bili proizvodi za kategoriju deserti -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galerija sekcija -->
+  <section class="section bg-pattern" id="galerija">
+    <div class="container">
+      <div class="section-header section-appear">
+        <h2>Galerija</h2>
+        <p>Pogledajte našu galeriju jela i ambijenta restorana</p>
+      </div>
+      
+      <div class="gallery-grid section-appear">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Sushi platter">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1624374984039-82130c5a7b91?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Restaurant interior">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Chef preparing sushi">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1607301404882-701e74503feb?ixlib=rb-4.0.3&auto=format&fit=crop&w=688&q=80" alt="Sake and sushi">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1584670747417-594a9412fba5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Tempura">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" alt="Maki set">
+        </div>
+      </div>
+    </div>
+    
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img class="lightbox-content" id="lightbox-img">
+    </div>
+  </section>
+
+  <!-- Testimonials sekcija -->
+  <section class="section testimonials-section" id="o-nama">
+    <div class="container">
+      <div class="section-header section-appear">
+        <h2>Zadovoljni gosti</h2>
+        <p>Evo šta naši gosti kažu o svom iskustvu u Sakura restoranima</p>
+      </div>
+      
+      <div class="testimonial-slider section-appear">
+        <div class="testimonial-container">
+          <div class="testimonial">
+            <div class="testimonial-text">
+              <p>"Nana u Porto Montenegru je bez sumnje najbolji japanski restoran koji sam posjetio u regionu. Svježina namirnica i autentičnost ukusa me je oduševila. Posebno preporučujem njihov Omakase meni!"</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="testimonial-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Marko Perović">
+              </div>
+              <h4 class="testimonial-name">Marko Perović</h4>
+              <p class="testimonial-title">Food Blogger</p>
+            </div>
+          </div>
+          
+          <div class="testimonial">
+            <div class="testimonial-text">
+              <p>"Japan Street Food je moje omiljeno mesto za brzi ručak. Ramen je fenomenalan, a gyoza je najbolja koju sam ikada probala. Osoblje je ljubazno, a ambijent autentičan. Apsolutna preporuka!"</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="testimonial-image">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Ana Jovanović">
+              </div>
+              <h4 class="testimonial-name">Ana Jovanović</h4>
+              <p class="testimonial-title">Redovni gost</p>
+            </div>
+          </div>
+          
+          <div class="testimonial">
+            <div class="testimonial-text">
+              <p>"Proslavili smo godišnjicu braka u NAMA restoranu u centru Podgorice i oduševljeni smo. Sushi je bio savršen, sakeji odlični, a usluga na nivou restorana sa Michelin zvezdicom. Definitivno ćemo se vraćati."</p>
+            </div>
+            <div class="testimonial-author">
+              <div class="testimonial-image">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Nikola i Ivana Vuković">
+              </div>
+              <h4 class="testimonial-name">Nikola i Ivana Vuković</h4>
+              <p class="testimonial-title">Zadovoljni gosti</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="slider-controls">
+          <div class="slider-arrow prev-slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </div>
+          <div class="slider-arrow next-slide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="slider-dots">
+          <div class="slider-dot active" data-index="0"></div>
+          <div class="slider-dot" data-index="1"></div>
+          <div class="slider-dot" data-index="2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt sekcija -->
+  <section class="section" id="kontakt">
+    <div class="container">
+      <div class="section-header section-appear">
+        <h2>Kontaktirajte nas</h2>
+        <p>Imate pitanje, želite rezervaciju ili ste zainteresovani za saradnju? Pošaljite nam poruku</p>
+      </div>
+      
+      <div class="contact-grid section-appear">
+        <div class="contact-form">
+          <h3>Pošaljite nam poruku</h3>
+          
+          <div id="form-status" class="form-status"></div>
+          
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Ime i prezime</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email adresa</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Tema</label>
+              <select id="subject" name="subject" required>
+                <option value="">Izaberite temu</option>
+                <option value="reservation">Rezervacija</option>
+                <option value="feedback">Utisci i sugestije</option>
+                <option value="partnership">Poslovna saradnja</option>
+                <option value="other">Ostalo</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Poruka</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Pošalji poruku</button>
+          </form>
+        </div>
+        
+        <div class="contact-info">
+          <h3>Kontakt informacije</h3>
+          
+          <div class="info-block">
+            <h4>Centralna kancelarija</h4>
+            <div class="info-list">
+              <div class="info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <span>Bulevar Sv. Petra Cetinjskog 56, Podgorica</span>
+              </div>
+              <div class="info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                <span>+382 20 234 567</span>
+              </div>
+              <div class="info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <span>info@nama.me</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="info-block">
+            <h4>Radno vrijeme centralnog restorana</h4>
+            <div class="working-hours">
+              <div><span>Ponedeljak - Četvrtak</span><span>10:00 - 23:00</span></div>
+              <div><span>Petak - Subota</span><span>10:00 - 00:00</span></div>
+              <div><span>Nedelja</span><span>12:00 - 22:00</span></div>
+            </div>
+          </div>
+          
+          <div class="info-block" id="rezervacija">
+            <h4>Rezervacije</h4>
+            <div class="info-list">
+              <div class="info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                <span>+382 20 234 567</span>
+              </div>
+              <div class="info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <span>rezervacije@nama.me</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Mapa sekcija -->
+  <section class="section">
+    <div class="container">
+      <div class="map-container section-appear">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23648.95382994285!2d18.787905!3d42.43569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134c3376173249db%3A0x80bb363b6a8655b!2sTivat%2C%20Montenegro!5e0!3m2!1sen!2sus!4v1684244595182!5m2!1sen!2sus" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <h3 class="footer-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="currentColor"/>
+              <path d="M15 8.5C15 9.88071 13.8807 11 12.5 11C11.1193 11 10 9.88071 10 8.5C10 7.11929 11.1193 6 12.5 6C13.8807 6 15 7.11929 15 8.5Z" fill="white"/>
+              <path d="M14 15C14 16.1046 13.1046 17 12 17C10.8954 17 10 16.1046 10 15C10 13.8954 10.8954 13 12 13C13.1046 13 14 13.8954 14 15Z" fill="white"/>
+            </svg>
+            MAMA
+          </h3>
+          <p>
+            Autentična japanska kuhinja i moderan ambijent u srcu Crne Gore. Dobrodošli u Sakura doživljaj!
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47H15.2c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.3,5.71a4.44,4.44,0,0,0-3.13-1.33H8.83A4.44,4.44,0,0,0,5.7,5.71,4.44,4.44,0,0,0,4.37,8.83v6.34A4.44,4.44,0,0,0,5.7,18.3a4.44,4.44,0,0,0,3.13,1.33h6.34A4.44,4.44,0,0,0,18.3,18.3a4.44,4.44,0,0,0,1.33-3.13V8.83A4.44,4.44,0,0,0,18.3,5.71ZM12,15.46a3.46,3.46,0,1,1,3.46-3.46A3.46,3.46,0,0,1,12,15.46Z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22,5.8a8.49,8.49,0,0,1-2.36.64,4.13,4.13,0,0,0,1.81-2.27,8.21,8.21,0,0,1-2.61,1,4.1,4.1,0,0,0-7,3.74A11.64,11.64,0,0,1,3.39,4.62a4.16,4.16,0,0,0-.55,2.07A4.09,4.09,0,0,0,4.66,10.1,4.05,4.05,0,0,1,2.8,9.59v.05a4.1,4.1,0,0,0,3.3,4A3.93,3.93,0,0,1,5,13.81a4.9,4.9,0,0,1-.77-.07,4.11,4.11,0,0,0,3.83,2.84A8.22,8.22,0,0,1,3,18.34a7.93,7.93,0,0,1-1-.06,11.57,11.57,0,0,0,6.29,1.85A11.59,11.59,0,0,0,20,8.45c0-.17,0-.35,0-.53A8.43,8.43,0,0,0,22,5.8Z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.82,8.01C19.82,8.01 19.9,6.97 19.5,6.5C18.97,5.87 18.37,5.86 18,5.82C15.44,5.64 12.01,5.64 12.01,5.64C12.01,5.64 8.58,5.64 6.02,5.82C5.65,5.86 5.05,5.87 4.52,6.5C4.12,6.97 4.2,8.01 4.2,8.01C4.2,8.01 4.1,9.22 4.1,10.43V11.57C4.1,12.78 4.2,14 4.2,14C4.2,14 4.12,15.04 4.52,15.5C5.05,16.14 5.76,16.12 6.17,16.18C7.38,16.29 12,16.34 12,16.34C12,16.34 15.44,16.33 18,16.16C18.37,16.12 18.97,16.11 19.5,15.48C19.9,15.01 19.82,13.97 19.82,13.97C19.82,13.97 19.92,12.76 19.92,11.55V10.41C19.92,9.2 19.82,8.01 19.82,8.01ZM10.24,12.96V8.43L14.74,10.71L10.24,12.96Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Brzi linkovi</h4>
+          <ul>
+            <li><a href="#specijaliteti">Specijaliteti</a></li>
+            <li><a href="#lokacije">Lokacije</a></li>
+            <li><a href="#meni">Meni</a></li>
+            <li><a href="#galerija">Galerija</a></li>
+            <li><a href="#o-nama">O nama</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Korisne informacije</h4>
+          <ul>
+            <li><a href="#rezervacija">Online rezervacije</a></li>
+            <li><a href="#">Karijera</a></li>
+            <li><a href="#">Naš blog</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privatnost</a></li>
+            <li><a href="#">Uslovi korišćenja</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h4>Kontakt</h4>
+          <address>
+            <p>Centrala: Bulevar Sv. Petra Cetinjskog 56</p>
+            <p>81000 Podgorica, Crna Gora</p>
+            <p>Email: info@sakura.me</p>
+            <p>Telefon: +382 20 234 567</p>
+          </address>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year"></span> cryptogorac.com | Sva prava zadržana.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Automatski postavi tekuću godinu u footer-u
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Navigacija - scroll efekt
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Mobilni meni
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Zatvaranje mobilnog menija pri kliku na link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Detekcija aktivnog dela stranice tokom skrolovanja
+    window.addEventListener('scroll', function() {
+      const sections = ['pocetna', 'specijaliteti', 'lokacije', 'meni', 'galerija', 'o-nama', 'kontakt'];
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      let currentSection = '';
+      
+      sections.forEach(section => {
+        const element = document.getElementById(section);
+        if (!element) return;
+        
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          currentSection = section;
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Animacije na scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section-appear')
+      .forEach(el => observer.observe(el));
+
+    // Galerija - lightbox funkcionalnost
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const imgSrc = item.querySelector('img').getAttribute('src');
+        lightboxImg.setAttribute('src', imgSrc);
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Menu tabs functionality
+    const menuTabs = document.querySelectorAll('.menu-tab');
+    const menuGrids = document.querySelectorAll('.menu-grid');
+    
+    menuTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        menuTabs.forEach(t => t.classList.remove('active'));
+        // Add active class to current tab
+        tab.classList.add('active');
+        
+        // Hide all menu grids
+        menuGrids.forEach(grid => grid.style.display = 'none');
+        
+        // Show active menu grid
+        const tabCategory = tab.getAttribute('data-tab');
+        const activeGrid = document.getElementById(`${tabCategory}-menu`);
+        if (activeGrid) {
+          activeGrid.style.display = 'grid';
+        }
+      });
+    });
+
+    // Testimonials slider functionality
+    let currentSlide = 0;
+    const testimonials = document.querySelectorAll('.testimonial');
+    const testimonialContainer = document.querySelector('.testimonial-container');
+    const dots = document.querySelectorAll('.slider-dot');
+    const prevBtn = document.querySelector('.prev-slide');
+    const nextBtn = document.querySelector('.next-slide');
+    
+    function showSlide(n) {
+      currentSlide = n;
+      
+      if (currentSlide >= testimonials.length) {
+        currentSlide = 0;
+      }
+      
+      if (currentSlide < 0) {
+        currentSlide = testimonials.length - 1;
+      }
+      
+      // Update slider position
+      testimonialContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Update dots
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+    
+    // Add event listeners to dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+      });
+    });
+    
+    // Add event listeners to arrows
+    prevBtn.addEventListener('click', () => {
+      showSlide(currentSlide - 1);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      showSlide(currentSlide + 1);
+    });
+    
+    // Auto slide
+    setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 5000);
+
+    // Forme
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Provera forme
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        if (!name || !email || !subject || !message) {
+          formStatus.textContent = 'Molimo popunite sva polja.';
+          formStatus.classList.add('error');
+          formStatus.classList.remove('success');
+          return;
+        }
+        
+        // Simulacija slanja forme
+        formStatus.textContent = 'Poruka je uspešno poslata! Odgovorićemo vam uskoro.';
+        formStatus.classList.add('success');
+        formStatus.classList.remove('error');
+        
+        // Reset forme
+        contactForm.reset();
+        
+        // Sakrij statusnu poruku nakon 5 sekundi
+        setTimeout(() => {
+          formStatus.style.display = 'none';
+        }, 5000);
+      });
+    }
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
